@@ -1,0 +1,41 @@
+---
+# Configuration for vector.
+# Docs: https://vector.dev/docs/
+
+api:
+  enabled: true
+  address: "127.0.0.1:8686"
+
+# Data dir is location controlled at the `DaemonSet`.
+data_dir: /var/lib/logshipper
+
+log_schema:
+  host_key: host
+  message_key: message
+  source_type_key: source_type
+  timestamp_key: timestamp
+
+sources:
+  journald:
+    type: journald
+    current_boot_only: true
+    include_units:
+      - balena
+
+transforms:
+  balena:
+    type: remap
+    inputs:
+      - journald
+    source: |-
+      .service = replace(.CONTAINER_NAME, r'_\w+_\w+_\w+$', "") ?? .CONTAINER_NAME
+      .container = .CONTAINER_NAME
+      .fleet = get_env_var("BALENA_FLEET_NAME") ?? ""
+      .device = get_env_var("BALENA_DEVICE_UUID") ?? ""
+      .source_type = "balena"
+
+sinks:
+  blackhole:
+    type: blackhole
+    inputs:
+      - balena

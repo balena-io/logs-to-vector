@@ -1,0 +1,19 @@
+FROM timberio/vector:0.21.0-debian as logshipper
+
+RUN apt update \
+    && apt install -y \
+    gettext \
+    && rm -rf /var/cache/apt
+
+RUN rm -rf /etc/vector \
+    && mkdir -p /etc/vector/certificates
+
+COPY vector.yaml /etc/vector/
+COPY templates/*.yaml.template /etc/vector/
+COPY start.sh .
+
+ENV LOG warn
+
+ENTRYPOINT [ "bash" ]
+
+CMD [ "start.sh" ]

@@ -1,0 +1,24 @@
+---
+# https://vector.dev/docs/reference/configuration/sinks/vector/
+sinks:
+  vector:
+    type: vector
+    inputs:
+      - balena
+    address: "${VECTOR_ENDPOINT}"
+    buffer:
+      max_events: 1000
+      type: memory
+      when_full: drop_newest
+    healthcheck:
+      enabled: true
+    keepalive:
+      time_secs: 15
+    tls:
+      enabled: ${VECTOR_TLS_ENABLED}
+      #verify_certificate: ${VECTOR_TLS_ENABLED}
+      #verify_hostname: ${VECTOR_TLS_ENABLED}
+      #ca_file: "${CERTIFICATES_DIR}/ca.pem"
+      #crt_file: "${CERTIFICATES_DIR}/client.pem"
+      #key_file: "${CERTIFICATES_DIR}/client-key.pem"
+    version: "1"

@@ -1,0 +1,23 @@
+name: log-shipper
+type: sw.block
+description: >-
+  A log collection agent that ships logs from the balena engine to a downstream
+  log aggregator.  It uses Vector as an agent to collect the logs from
+  journald, add labels to the logs, and send the logs to a log aggregator.
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/balenablocks/logshipper'
+data:
+  defaultDeviceType: genericx86-64-ext
+  supportedDeviceTypes:
+    - generic
+    - genericx86-64-ext
+    - intel-nuc
+    - odyssey-x86
+    - qemux86-64
+    - surface-go
+    - surface-pro-6
+    - up-board
+version: 0.1.0
