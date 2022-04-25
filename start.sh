@@ -40,7 +40,12 @@ function start_vector() {
 
 BALENA_FLEET_NAME=${BALENA_APP_NAME}
 CERTIFICATES_DIR=/etc/vector/certificates
-
 cd /etc/vector
 prepare_vector_sink
-start_vector
+
+if [[ "$DISABLED" =~ true|True|TRUE|yes|Yes|YES|on|On|ON|1 ]]; then
+	echo 'Logshipper has been disabled. This service is now idle.'
+	sleep infinity
+else
+	start_vector
+fi
