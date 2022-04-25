@@ -69,6 +69,7 @@ sinks:
 
 | Environment Variable        | Default | Description                                          |
 | --------------------------- | ------  | -----------------------------------------------------|
+| `DISABLE`                   | `false` | Disables the logshipper service
 | `VECTOR_ENDPOINT`           | ``      | The endpoint of the vector log aggregator            |
 | `VECTOR_TLS_CA_FILE`        | ``      | An additional CA certificate file encoded in base 64 |
 | `VECTOR_TLS_CRT_FILE`       | ``      | The client certificate file encoded in base 64       |
