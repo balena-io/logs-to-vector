@@ -10,6 +10,7 @@ sinks:
       max_events: 1000
       type: memory
       when_full: drop_newest
+    compression: true
     healthcheck:
       enabled: true
     keepalive:
@@ -21,4 +22,4 @@ sinks:
       #ca_file: "${CERTIFICATES_DIR}/ca.pem"
       #crt_file: "${CERTIFICATES_DIR}/client.pem"
       #key_file: "${CERTIFICATES_DIR}/client-key.pem"
-    version: "1"
+    version: "2"
