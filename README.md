@@ -4,6 +4,10 @@ A log collection agent that ships logs from the balena engine to a downstream
 log aggregator.  It uses [Vector][vector] as an agent to collect the logs from
 journald, add labels to the logs, and send the logs to a log aggregator.
 
+Important: Starting v1.0.0, logshipper now uses Vector API v2 which is incompatible
+with Vector API v1.  If you are using a Vector API v1 endpoint, please use
+logshipper v0.2.1 instead.
+
 The agent currently ships logs to the following log aggregators:
 - [Vector][vector]
 
@@ -67,14 +71,15 @@ sinks:
 
 `bh.cr/balenablocks/logshipper` can be configured via the following variables:
 
-| Environment Variable        | Default | Description                                          |
-| --------------------------- | ------  | -----------------------------------------------------|
-| `DISABLE`                   | `false` | Disables the logshipper service
-| `VECTOR_ENDPOINT`           | ``      | The endpoint of the vector log aggregator            |
-| `VECTOR_TLS_CA_FILE`        | ``      | An additional CA certificate file encoded in base 64 |
-| `VECTOR_TLS_CRT_FILE`       | ``      | The client certificate file encoded in base 64       |
-| `VECTOR_TLS_KEY_FILE`       | ``      | The client certificate key file encoded in base 64   |
-| `VECTOR_VERIFY_CERTIFICATE` | `false` | Enables TLS certificate verification.                |
+| Environment Variable         | Default | Description                                          |
+| ---------------------------- | ------  | -----------------------------------------------------|
+| `DISABLE`                    | `false` | Disables the logshipper service                      |
+| `VECTOR_COMPRESSION_ENABLED` | `true`  | Enables gRPC compression with gzip                   |
+| `VECTOR_ENDPOINT`            | ``      | The endpoint of the vector log aggregator            |
+| `VECTOR_TLS_CA_FILE`         | ``      | An additional CA certificate file encoded in base 64 |
+| `VECTOR_TLS_CRT_FILE`        | ``      | The client certificate file encoded in base 64       |
+| `VECTOR_TLS_KEY_FILE`        | ``      | The client certificate key file encoded in base 64   |
+| `VECTOR_VERIFY_CERTIFICATE`  | `false` | Enables TLS certificate verification.                |
 
 You can refer to the [docs](https://www.balena.io/docs/learn/manage/serv-vars/#environment-and-service-variables) on how to set environment or service variables
 

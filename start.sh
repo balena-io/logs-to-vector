@@ -4,6 +4,7 @@
 set -ae
 
 function prepare_vector_sink() {
+	VECTOR_COMPRESSION_ENABLED=${VECTOR_COMPRESSION_ENABLED:-true}
 	VECTOR_TLS_ENABLED=false
 	if [ -n "${VECTOR_ENDPOINT}" ]; then
 		if [ -n "${VECTOR_TLS_CA_FILE}" ]
