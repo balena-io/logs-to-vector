@@ -1,0 +1,79 @@
+- commits:
+    - subject: Bump Vector to v0.24.2.
+      hash: 44fe6b53ac5f840599794a1050c11d8ad3923cfc
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+    - subject: VECTOR_COMPRESSION_ENABLED now defaults to "true".
+      hash: e5c6a929bd6a4b1a3297e16bf0dd18c3f79600fa
+      body: |
+        Vector API V2 sinks can both receive compressed and
+        uncompressed requests without additional configuration.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+    - subject: Improves reliability and allow optional compression.
+      hash: 2d43648393fa16082425e7372ac62bebd34cfa15
+      body: |
+        VECTOR_COMPRESSION_ENABLED flag can be used to enable
+        compression which is now disabled by default.
+
+        Request concurrency is fixed to 1024 and the request timeout
+        is extended to 5 minutes.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.0.1
+  title: ""
+  date: 2022-10-14T07:05:15.424Z
+- version: 1.0.0
+  date: 2022-10-13T09:19:08Z
+  commits:
+    - hash: f36cf1d713c67b133a057a55b99b66d929ac6c74
+      author: Pagan Gazzard
+      footers:
+        change-type: patch
+      subject: Switch from balenaCI to flowzone
+      body: null
+    - hash: 56ffb008488371b5a92dac676318d0e6a62c6231
+      author: Carlo Miguel F. Cruz
+      footers:
+        change-type: major
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      subject: Bump Vector version from v0.21.2 to v0.24.0.
+      body: >-
+        Breaking change: Switches to Vector API V2 which is not compatible with
+        V1.
+
+        Enables gRPC compression with gzip.
+    - hash: 359780f102a6602f08de3bc86fc4e38548b8bb85
+      author: Carlo Miguel F. Cruz
+      footers:
+        change-type: patch
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      subject: Bump Vector version from v0.21.0 to v0.21.2.
+      body: null
+    - hash: ca25f6f0d5708fac33d3cb9f25fb1a40c8104e49
+      author: Carlo Miguel F. Cruz
+      footers:
+        change-type: patch
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      subject: Environment variables for client certificate & key added to README.
+      body: null
+    - hash: a3b94a9cadb03c8451d3db63a14d1e69e45c4b50
+      author: Carlo Miguel F. Cruz
+      footers:
+        change-type: minor
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      subject: Adds option to disable the logshipper service.
+      body: null
