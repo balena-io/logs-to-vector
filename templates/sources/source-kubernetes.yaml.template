@@ -1,0 +1,3 @@
+---
+# https://vector.dev/docs/reference/configuration/sources/kubernetes_logs/
+type: kubernetes_logs

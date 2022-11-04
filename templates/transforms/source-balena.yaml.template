@@ -1,0 +1,12 @@
+---
+# https://vector.dev/docs/reference/configuration/transforms/remap/
+# https://vector.dev/docs/reference/vrl/
+type: remap
+inputs:
+  - journald
+source: |-
+  .service = replace(.CONTAINER_NAME, r'_\w+_\w+_\w+$', "") ?? .CONTAINER_NAME
+  .container = .CONTAINER_NAME
+  .fleet = get_env_var("BALENA_FLEET_NAME") ?? ""
+  .device = get_env_var("BALENA_DEVICE_UUID") ?? ""
+  .source_type = "balena"
