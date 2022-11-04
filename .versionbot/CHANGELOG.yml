@@ -1,4 +1,17 @@
 - commits:
+    - subject: Align versionist version to match balenablock version.
+      hash: 7f65b96dbb55e1e429c7881626868db031912eee
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.2.0
+  title: ""
+  date: 2022-11-04T12:30:57.968Z
+- commits:
     - subject: Adds Kubernetes support and re-organizes configuration templates.
       hash: 7789c3fd4fb3e9a309981417373ae6ce9942c4ed
       body: |
