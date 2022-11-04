@@ -1,4 +1,23 @@
 - commits:
+    - subject: Adds Kubernetes support and re-organizes configuration templates.
+      hash: 7789c3fd4fb3e9a309981417373ae6ce9942c4ed
+      body: |
+        Now supports log collection from Kubernetes API.  This allows the
+        logshipper balenablock to be used both in a Kubernetes cluster
+        and on a balena device.
+        Allows easier maintenance of configurations and reduce the nesting
+        of configuraton properties.
+        Vector sink now allows adjustment of request timeout.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.1.0
+  title: ""
+  date: 2022-11-04T12:10:10.931Z
+- commits:
     - subject: Bump Vector to v0.24.2.
       hash: 44fe6b53ac5f840599794a1050c11d8ad3923cfc
       body: ""
