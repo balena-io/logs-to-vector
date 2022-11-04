@@ -1,0 +1,27 @@
+---
+# https://vector.dev/docs/reference/configuration/sinks/vector/
+type: vector
+inputs:
+  - source-*
+address: "${VECTOR_ENDPOINT}"
+batch:
+  max_events: 500
+  max_size: 1000000
+buffer:
+  max_events: 1000
+  type: memory
+  when_full: drop_newest
+compression: ${VECTOR_COMPRESSION_ENABLED}
+healthcheck:
+  enabled: true
+request:
+  concurrency: 1024
+  timeout_secs: 300
+tls:
+  enabled: ${VECTOR_TLS_ENABLED}
+  #verify_certificate: ${VECTOR_TLS_ENABLED}
+  #verify_hostname: ${VECTOR_TLS_ENABLED}
+  #ca_file: "${CERTIFICATES_DIR}/ca.pem"
+  #crt_file: "${CERTIFICATES_DIR}/client.pem"
+  #key_file: "${CERTIFICATES_DIR}/client-key.pem"
+version: "2"

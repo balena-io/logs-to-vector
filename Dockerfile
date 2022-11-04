@@ -9,12 +9,12 @@ RUN rm -rf /etc/vector \
     && mkdir -p /etc/vector/certificates
 
 COPY vector.yaml /etc/vector/
-COPY templates/*.yaml.template /etc/vector/
+COPY templates/ /etc/vector/templates/
 COPY start.sh .
 
 ENV LOG warn
 ENV DISABLE false
 
-ENTRYPOINT [ "bash" ]
+ENTRYPOINT [ "/bin/bash" ]
 
 CMD [ "start.sh" ]

@@ -1,0 +1,6 @@
+---
+# https://vector.dev/docs/reference/configuration/sources/journald/
+type: journald
+current_boot_only: true
+include_units:
+  - balena
