@@ -1,4 +1,20 @@
 - commits:
+    - subject: Adds an option to use a disk buffer for Vector sink.
+      hash: d3254f6f1916aab462459e62080320f3eb2e6ec5
+      body: |
+        This allows users to use a disk buffer for environments
+        that not prone to disk failure caused by frequent writes
+        to disk.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.2.1
+  title: ""
+  date: 2022-11-08T12:47:37.260Z
+- commits:
     - subject: Align versionist version to match balenablock version.
       hash: 7f65b96dbb55e1e429c7881626868db031912eee
       body: ""
