@@ -8,17 +8,18 @@ batch:
   max_events: 500
   max_size: 1000000
 buffer:
-  max_events: 1000
-  type: memory
+  #max_events: ${VECTOR_BUFFER_MAX_EVENTS:-1000}
+  #max_size: ${VECTOR_BUFFER_MAX_SIZE:-268435488}
+  type: ${VECTOR_BUFFER_TYPE:-memory}
   when_full: drop_newest
-compression: ${VECTOR_COMPRESSION_ENABLED}
+compression: ${VECTOR_COMPRESSION_ENABLED:-true}
 healthcheck:
   enabled: true
 request:
   concurrency: 1024
-  timeout_secs: 300
+  timeout_secs: ${VECTOR_REQUEST_TIMEOUT_SECS:-300}
 tls:
-  enabled: ${VECTOR_TLS_ENABLED}
+  enabled: ${VECTOR_TLS_ENABLED:-false}
   #verify_certificate: ${VECTOR_TLS_ENABLED}
   #verify_hostname: ${VECTOR_TLS_ENABLED}
   #ca_file: "${CERTIFICATES_DIR}/ca.pem"
