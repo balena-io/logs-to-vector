@@ -56,9 +56,9 @@ function prepare_sink_vector() {
 
 function start_vector() {
 	# https://vector.dev/docs/administration/validating/
-	cat /etc/vector/*.y*ml \
-	&& vector validate --config-dir /etc/vector \
-	&& vector --config-dir /etc/vector
+	cat /etc/vector/*.y*ml
+	# vector validate --config-dir /etc/vector
+	vector --config-dir /etc/vector
 }
 
 
