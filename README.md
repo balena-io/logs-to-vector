@@ -71,19 +71,20 @@ sinks:
 
 `bh.cr/balenablocks/logshipper` can be configured via the following variables:
 
-| Environment Variable          | Default  | Description                                               |
-| ----------------------------- | -------- | --------------------------------------------------------- |
-| `DISABLE`                     | `false`  | Disables the logshipper service                           |
-| `VECTOR_BUFFER_MAX_EVENTS`    | `1000`   | The maximum number of events allowed in the buffer        |
-| `VECTOR_BUFFER_MAX_SIZE`      | `268435488` | The maximum size of the buffer on the disk             |
-| `VECTOR_BUFFER_TYPE`          | `memory` | The type of buffer to use                                 |
-| `VECTOR_COMPRESSION_ENABLED`  | `true`   | Enables gRPC compression with gzip                        |
-| `VECTOR_ENDPOINT`             | ``       | The endpoint of the vector log aggregator                 |
-| `VECTOR_REQUEST_TIMEOUT_SECS` | `300`    | The maximum time a request can take before being aborted  |
-| `VECTOR_TLS_CA_FILE`          | ``       | An additional CA certificate file encoded in base 64      |
-| `VECTOR_TLS_CRT_FILE`         | ``       | The client certificate file encoded in base 64            |
-| `VECTOR_TLS_KEY_FILE`         | ``       | The client certificate key file encoded in base 64        |
-| `VECTOR_VERIFY_CERTIFICATE`   | `false`  | Enables TLS certificate verification.                     |
+| Environment Variable            | Default  | Description                                                |
+| ------------------------------- | -------- | ---------------------------------------------------------- |
+| `DISABLE`                       | `false`  | Disables the logshipper service                            |
+| `VECTOR_BUFFER_MAX_EVENTS`      | `1000`   | The maximum number of events allowed in the buffer         |
+| `VECTOR_BUFFER_MAX_SIZE`        | `268435488` | The maximum size of the buffer on the disk              |
+| `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use                                  |
+| `VECTOR_COMPRESSION_ENABLED`    | `true`   | Enables gRPC compression with gzip                         |
+| `VECTOR_ENDPOINT`               | ``       | The endpoint of the vector log aggregator                  |
+| `VECTOR_REQUEST_TIMEOUT_SECS`   | `300`    | The maximum time a request can take before being aborted   |
+| `VECTOR_TLS_CA_FILE`            | ``       | An additional CA certificate file encoded in base 64       |
+| `VECTOR_TLS_CRT_FILE`           | ``       | The client certificate file encoded in base 64             |
+| `VECTOR_TLS_KEY_FILE`           | ``       | The client certificate key file encoded in base 64         |
+| `VECTOR_TLS_VERIFY_CERTIFICATE` | `true`   | Verifies the TLS certificate of the remote hos             |
+| `VECTOR_TLS_VERIFY_HOSTNAME`    | `true`   | Verifies the endpoint hostname against the TLS certificate |
 
 You can refer to the [docs](https://www.balena.io/docs/learn/manage/serv-vars/#environment-and-service-variables) on how to set environment or service variables
 

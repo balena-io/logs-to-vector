@@ -20,8 +20,8 @@ request:
   timeout_secs: ${VECTOR_REQUEST_TIMEOUT_SECS:-300}
 tls:
   enabled: ${VECTOR_TLS_ENABLED:-false}
-  #verify_certificate: ${VECTOR_TLS_ENABLED}
-  #verify_hostname: ${VECTOR_TLS_ENABLED}
+  #verify_certificate: ${VECTOR_TLS_VERIFY_CERTIFICATE:-true}
+  #verify_hostname: ${VECTOR_TLS_VERIFY_HOSTNAME:-true}
   #ca_file: "${CERTIFICATES_DIR}/ca.pem"
   #crt_file: "${CERTIFICATES_DIR}/client.pem"
   #key_file: "${CERTIFICATES_DIR}/client-key.pem"
