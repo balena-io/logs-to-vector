@@ -43,8 +43,6 @@ function prepare_sink_vector() {
 			sed -i 's|#verify_certificate:|verify_certificate:|g' sinks/sink-vector.yaml
 			sed -i 's|#verify_hostname:|verify_hostname:|g' sinks/sink-vector.yaml
 		fi
-		# https://stackoverflow.com/a/31926346/1559300
-		# cat < templates/sinks/sink-vector.yaml.template | envsubst > sinks/sink-vector.yaml
 
 		if [[ "${VECTOR_BUFFER_TYPE}" == 'disk' ]]; then
                         sed -i 's|#max_size:|max_size:|g' sinks/sink-vector.yaml
@@ -56,8 +54,8 @@ function prepare_sink_vector() {
 
 function start_vector() {
 	# https://vector.dev/docs/administration/validating/
-	cat /etc/vector/*.y*ml \
-	&& vector validate --config-dir /etc/vector \
+	find /etc/vector -name "*.y*ml" -exec cat {} \; 
+	vector validate --config-dir /etc/vector \
 	&& vector --config-dir /etc/vector
 }
 
