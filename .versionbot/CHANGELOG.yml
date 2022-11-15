@@ -1,4 +1,22 @@
 - commits:
+    - subject: Switches buffer behavior to block by default in Kuberentes.
+      hash: 929c5f5209fe6b6e80e12980ae121f27d3972b17
+      body: |
+        Kubernetes typically have a higher volume of events than
+        a balena device but also use more powerful devices that
+        can provide larger buffers. The behavior can still be
+        overriden by using the VECTOR_BUFFER_WHEN_FULL environment
+        variable.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.2.3
+  title: ""
+  date: 2022-11-15T05:57:30.853Z
+- commits:
     - subject: Re-enables config verification and gives TLS verification options.
       hash: 2ca47331ecd5c7fea8dc514c637ffc20fb8bad5d
       body: |
