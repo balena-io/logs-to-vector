@@ -11,7 +11,7 @@ buffer:
   #max_events: ${VECTOR_BUFFER_MAX_EVENTS:-1000}
   #max_size: ${VECTOR_BUFFER_MAX_SIZE:-268435488}
   type: ${VECTOR_BUFFER_TYPE:-memory}
-  when_full: drop_newest
+  when_full: ${VECTOR_BUFFER_WHEN_FULL:-drop_newest}
 compression: ${VECTOR_COMPRESSION_ENABLED:-true}
 healthcheck:
   enabled: true
