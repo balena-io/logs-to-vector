@@ -1,12 +1,12 @@
-# logshipper
+# logs-to-vector
 
 A log collection agent that ships logs from the balena engine to a downstream
 log aggregator.  It uses [Vector][vector] as an agent to collect the logs from
 journald, add labels to the logs, and send the logs to a log aggregator.
 
-Important: Starting v1.0.0, logshipper now uses Vector API v2 which is incompatible
+Important: Starting v1.0.0, logs-to-vector now uses Vector API v2 which is incompatible
 with Vector API v1.  If you are using a Vector API v1 endpoint, please use
-logshipper v0.2.1 instead.
+logs-to-vector v0.2.1 instead.
 
 The agent currently ships logs to the following log aggregators:
 - [Vector][vector]
@@ -19,15 +19,15 @@ To use this image, create a service in your `docker-compose.yml` as shown below:
 version: "2.1"
 
 volumes:
-  logshipper: {}
+  logs-to-vector: {}
 
-logshipper:
-    image: bh.cr/balenablocks/logshipper
+logs-to-vector:
+    image: bh.cr/balenablocks/logs-to-vector
     labels:
       io.balena.features.journal-logs: '1'
     restart: unless_stopped
     volumes:
-      - logshipper:/var/lib/logshipper
+      - logs-to-vector:/var/lib/logs-to-vector
 ```
 
 You can also set your docker-compose.yml to build from a Dockerfile.template file. 
@@ -38,21 +38,21 @@ You may add your own Vector sinks that takes `balena` as input.
 version: "2.1"
 
 volumes:
-  logshipper: {}
+  logs-to-vector: {}
 
 services:
-  logshipper:
+  logs-to-vector:
     build: ./
     labels:
       io.balena.features.journal-logs: '1'
     restart: unless_stopped
     volumes:
-      - logshipper:/var/lib/logshipper
+      - logs-to-vector:/var/lib/logs-to-vector
 ```
 
 *Dockerfile.template*
 ```
-FROM bh.cr/balenablocks/logshipper
+FROM bh.cr/balenablocks/logs-to-vector
 
 COPY sink.yaml /etc/vector
 ```
@@ -69,11 +69,11 @@ sinks:
 
 ## Customisation
 
-`bh.cr/balenablocks/logshipper` can be configured via the following variables:
+`bh.cr/balenablocks/logs-to-vector` can be configured via the following variables:
 
 | Environment Variable            | Default  | Description                                                |
 | ------------------------------- | -------- | ---------------------------------------------------------- |
-| `DISABLE`                       | `false`  | Disables the logshipper service                            |
+| `DISABLE`                       | `false`  | Disables the logs-to-vector service                            |
 | `VECTOR_BUFFER_MAX_EVENTS`      | `1000`   | The maximum number of events allowed in the buffer         |
 | `VECTOR_BUFFER_MAX_SIZE`        | `268435488` | The maximum size of the buffer on the disk              |
 | `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use                                  |
