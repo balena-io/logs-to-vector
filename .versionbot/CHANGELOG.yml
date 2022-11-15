@@ -1,4 +1,28 @@
 - commits:
+    - subject: changing all references of logshipper
+      hash: 38b69f1612fae3718fd7f8acc974e5fa7d50fe16
+      body: ""
+      footer:
+        Signed-off-by: Flynn Joffray <flynn@balena.io>
+        signed-off-by: Flynn Joffray <flynn@balena.io>
+        Change-type: patch
+        change-type: patch
+      author: Flynn Joffray
+    - subject: Rename logshipper to logs-to-vector.
+      hash: 9db9c997b47b7e549d5ad265b89009c81b586c33
+      body: |
+        Also updates Github Action to automate deployment
+        to balenaCloud.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.2.4
+  title: ""
+  date: 2022-11-15T18:37:15.998Z
+- commits:
     - subject: Switches buffer behavior to block by default in Kuberentes.
       hash: 929c5f5209fe6b6e80e12980ae121f27d3972b17
       body: |
