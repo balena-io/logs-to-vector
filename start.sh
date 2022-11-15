@@ -25,6 +25,9 @@ function prepare_source_kubernetes() {
 function prepare_sink_vector() {
 	mkdir -p sinks
         VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-memory}
+	# Temporarily handle old environment variable name 
+	test -n "$VECTOR_BUFFER_MAX_EVENTS" && VECTOR_BUFFER_MEMORY_MAX_EVENTS=${VECTOR_BUFFER_MAX_EVENTS}
+	test -n "$VECTOR_BUFFER_MAX_SIZE" && VECTOR_BUFFER_DISK_MAX_SIZE=${VECTOR_BUFFER_MAX_SIZE}
 	VECTOR_TLS_ENABLED=false
 	if [ -n "${VECTOR_ENDPOINT}" ]; then
 		cp -f templates/sinks/sink-vector.yaml.template sinks/sink-vector.yaml
