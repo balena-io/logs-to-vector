@@ -62,7 +62,7 @@ function start_vector() {
 
 
 if [[ "$DISABLED" =~ true|True|TRUE|yes|Yes|YES|on|On|ON|1 ]]; then
-	echo 'Logshipper has been disabled. This service is now idle.'
+	echo 'logs-to-vector has been disabled. This service is now idle.'
 	sleep infinity
 else
 	BALENA_FLEET_NAME=${BALENA_APP_NAME}

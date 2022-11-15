@@ -7,7 +7,7 @@ api:
   address: "0.0.0.0:8686"
 
 # Data dir is location controlled at the `DaemonSet`.
-data_dir: /var/lib/logshipper
+data_dir: /var/lib/logs-to-vector
 
 log_schema:
   host_key: host
