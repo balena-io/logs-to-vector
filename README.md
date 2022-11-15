@@ -74,10 +74,10 @@ sinks:
 | Environment Variable            | Default  | Description                                                |
 | ------------------------------- | -------- | ---------------------------------------------------------- |
 | `DISABLE`                       | `false`  | Disables the logshipper service                            |
-| `VECTOR_BUFFER_MAX_EVENTS`      | `1000`   | The maximum number of events allowed in the buffer         |
-| `VECTOR_BUFFER_MAX_SIZE`        | `268435488` | The maximum size of the buffer on the disk              |
-| `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use                                  |
-| `VECTOR_BUFFER_WHEN_FULL`       | `drop_newest` | The behavior when the buffer becomes full.            |
+| `VECTOR_BUFFER_DISK_MAX_SIZE`   | `268435488` | The maximum size of the buffer on the disk              |
+| `VECTOR_BUFFER_MEMORY_MAX_EVENTS` | `1000` | The maximum number of events allowed in the buffer         |
+| `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use (Options: `disk`, `memory`)      |
+| `VECTOR_BUFFER_WHEN_FULL`       | `drop_newest` | The behavior when the buffer becomes full (Options: `block`, `drop_newest`) |
 | `VECTOR_COMPRESSION_ENABLED`    | `true`   | Enables gRPC compression with gzip                         |
 | `VECTOR_ENDPOINT`               | ``       | The endpoint of the vector log aggregator                  |
 | `VECTOR_REQUEST_TIMEOUT_SECS`   | `300`    | The maximum time a request can take before being aborted   |
