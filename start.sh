@@ -16,6 +16,7 @@ function prepare_source_kubernetes() {
 	if [ -n "$KUBERNETES_SERVICE_HOST" ]
 	then
 		VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-disk}
+		VECTOR_BUFFER_WHEN_FULL=${VECTOR_BUFFER_WHEN_FULL:-block}
 		mkdir -p sources
 		cp -f templates/sources/source-kubernetes.yaml.template sources/source-kubernetes.yaml
 	fi
