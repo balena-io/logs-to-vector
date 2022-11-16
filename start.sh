@@ -4,72 +4,87 @@
 set -ae
 
 function prepare_source_balena() {
-	if [ -n "$BALENA_DEVICE_UUID" ]
-	then
-		mkdir -p sources transforms
-		cp -f templates/sources/journald.yaml.template sources/journald.yaml
-		cp -f templates/transforms/source-balena.yaml.template transforms/source-balena.yaml
-	fi
+    if [ -n "$BALENA_DEVICE_UUID" ]
+    then
+        mkdir -p sources transforms
+        envsubst < templates/sources/journald.yaml.template > sources/journald.yaml
+        envsubst < templates/transforms/source-balena.yaml.template > transforms/source-balena.yaml
+    fi
 }
 
 function prepare_source_kubernetes() {
-	if [ -n "$KUBERNETES_SERVICE_HOST" ]
-	then
-		VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-disk}
-		VECTOR_BUFFER_WHEN_FULL=${VECTOR_BUFFER_WHEN_FULL:-block}
-		mkdir -p sources
-		cp -f templates/sources/source-kubernetes.yaml.template sources/source-kubernetes.yaml
-	fi
+    if [ -n "$KUBERNETES_SERVICE_HOST" ]
+    then
+        VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-disk}
+        VECTOR_BUFFER_WHEN_FULL=${VECTOR_BUFFER_WHEN_FULL:-block}
+        mkdir -p sources
+        envsubst < templates/sources/source-kubernetes.yaml.template > sources/source-kubernetes.yaml
+    fi
 }
 
 function prepare_sink_vector() {
-	mkdir -p sinks
-        VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-memory}
-	VECTOR_TLS_ENABLED=false
-	if [ -n "${VECTOR_ENDPOINT}" ]; then
-		cp -f templates/sinks/sink-vector.yaml.template sinks/sink-vector.yaml
-		if [ -n "${VECTOR_TLS_CA_FILE}" ]; then
-			echo "${VECTOR_TLS_CA_FILE}" | base64 -d > "${CERTIFICATES_DIR}/ca.pem"
-			sed -i 's|#ca_file:|ca_file:|g' sinks/sink-vector.yaml
-			if [ -n "${VECTOR_TLS_CRT_FILE}" ] && [ -n "${VECTOR_TLS_KEY_FILE}" ]; then
-				echo "${VECTOR_TLS_CRT_FILE}" | base64 -d > "${CERTIFICATES_DIR}/client.pem"
-				sed -i 's|#crt_file:|crt_file:|g' sinks/sink-vector.yaml
-				echo "${VECTOR_TLS_KEY_FILE}" | base64 -d > "${CERTIFICATES_DIR}/client-key.pem"
-				sed -i 's|#key_file:|key_file:|g' sinks/sink-vector.yaml
-			fi
-			VECTOR_TLS_ENABLED=true
-		fi
+    mkdir -p sinks
 
-		if [[ "${VECTOR_TLS_ENABLED}" == 'true' ]]; then
-			sed -i 's|#verify_certificate:|verify_certificate:|g' sinks/sink-vector.yaml
-			sed -i 's|#verify_hostname:|verify_hostname:|g' sinks/sink-vector.yaml
-		fi
+    # Set default values here
+    VECTOR_ACKNOWLEDGEMENTS_ENABLED=${VECTOR_ACKNOWLEDGEMENTS_ENABLED:-true}
+    VECTOR_BUFFER_TYPE=${VECTOR_BUFFER_TYPE:-memory} 
+    VECTOR_BUFFER_WHEN_FULL=${VECTOR_BUFFER_WHEN_FULL:-drop_newest}
+    # Temporarily handle old environment variable names
+    test -n "$VECTOR_BUFFER_MAX_EVENTS" && VECTOR_BUFFER_MEMORY_MAX_EVENTS=${VECTOR_BUFFER_MAX_EVENTS}
+    test -n "$VECTOR_BUFFER_MAX_SIZE" && VECTOR_BUFFER_DISK_MAX_SIZE=${VECTOR_BUFFER_MAX_SIZE}
+    VECTOR_BUFFER_MEMORY_MAX_EVENTS=${VECTOR_BUFFER_MEMORY_MAX_EVENTS:-1000}
+    VECTOR_BUFFER_DISK_MAX_SIZE=${VECTOR_BUFFER_DISK_MAX_SIZE:-268435488}
+    VECTOR_COMPRESSION_ENABLED=${VECTOR_COMPRESSION_ENABLED:-true}
+    VECTOR_REQUEST_TIMEOUT_SECS=${VECTOR_REQUEST_TIMEOUT_SECS:-300}
 
-		if [[ "${VECTOR_BUFFER_TYPE}" == 'disk' ]]; then
-                        sed -i 's|#max_size:|max_size:|g' sinks/sink-vector.yaml
-                else
-                        sed -i 's|#max_events:|max_events:|g' sinks/sink-vector.yaml
-		fi
-	fi
+    # Prepare the configuration file
+    if [ -n "${VECTOR_ENDPOINT}" ]; then
+        envsubst < templates/sinks/sink-vector.yaml.template > sinks/sink-vector.yaml
+        if [ -n "${VECTOR_TLS_CA_FILE}" ]; then
+            VECTOR_TLS_ENABLED=true
+			VECTOR_TLS_VERIFY_CERTIFICATE=${VECTOR_TLS_VERIFY_CERTIFICATE:-true}
+			VECTOR_TLS_VERIFY_HOSTNAME=${VECTOR_TLS_VERIFY_HOSTNAME:-true}
+            envsubst < templates/sinks/sink-vector.yaml.template > sinks/sink-vector.yaml
+            echo "${VECTOR_TLS_CA_FILE}" | base64 -d > "${CERTIFICATES_DIR}/ca.pem"
+            sed -i 's|#ca_file:|ca_file:|g' sinks/sink-vector.yaml
+            if [ -n "${VECTOR_TLS_CRT_FILE}" ] && [ -n "${VECTOR_TLS_KEY_FILE}" ]; then
+                echo "${VECTOR_TLS_CRT_FILE}" | base64 -d > "${CERTIFICATES_DIR}/client.pem"
+                echo "${VECTOR_TLS_KEY_FILE}" | base64 -d > "${CERTIFICATES_DIR}/client-key.pem"
+                sed -i 's|#crt_file:|crt_file:|g' sinks/sink-vector.yaml
+                sed -i 's|#key_file:|key_file:|g' sinks/sink-vector.yaml
+				sed -i 's|#verify_certificate:|verify_certificate:|g' sinks/sink-vector.yaml
+				sed -i 's|#verify_hostname:|verify_hostname:|g' sinks/sink-vector.yaml
+            fi
+        else
+            VECTOR_TLS_ENABLED=false
+            envsubst < templates/sinks/sink-vector.yaml.template > sinks/sink-vector.yaml
+        fi
+
+        if [[ "${VECTOR_BUFFER_TYPE}" == 'disk' ]]; then
+                sed -i 's|#max_size:|max_size:|g' sinks/sink-vector.yaml
+        else
+                sed -i 's|#max_events:|max_events:|g' sinks/sink-vector.yaml
+        fi
+    fi
 }
 
 function start_vector() {
-	# https://vector.dev/docs/administration/validating/
-	find /etc/vector -name "*.y*ml" -exec cat {} \; 
-	vector validate --config-dir /etc/vector \
-	&& vector --config-dir /etc/vector
+    # https://vector.dev/docs/administration/validating/
+    find /etc/vector -name "*.y*ml" -exec cat {} \; 
+    vector validate --config-dir /etc/vector \
+    && vector --config-dir /etc/vector
 }
 
 
 if [[ "$DISABLED" =~ true|True|TRUE|yes|Yes|YES|on|On|ON|1 ]]; then
-	echo 'logs-to-vector has been disabled. This service is now idle.'
-	sleep infinity
+    echo 'logs-to-vector has been disabled. This service is now idle.'
+    sleep infinity
 else
-	BALENA_FLEET_NAME=${BALENA_APP_NAME}
-	CERTIFICATES_DIR=/etc/vector/certificates
-	cd /etc/vector
-	prepare_source_balena
-	prepare_source_kubernetes
-	prepare_sink_vector
-	start_vector
+    BALENA_FLEET_NAME=${BALENA_APP_NAME}
+    CERTIFICATES_DIR=/etc/vector/certificates
+    cd /etc/vector
+    prepare_source_balena
+    prepare_source_kubernetes
+    prepare_sink_vector
+    start_vector
 fi

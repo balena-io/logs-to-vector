@@ -4,24 +4,25 @@ type: vector
 inputs:
   - source-*
 address: "${VECTOR_ENDPOINT}"
+acknowledgements:
+  enabled: ${VECTOR_ACKNOWLEDGEMENTS_ENABLED}
 batch:
-  max_events: 500
   max_size: 1000000
 buffer:
-  #max_events: ${VECTOR_BUFFER_MAX_EVENTS:-1000}
-  #max_size: ${VECTOR_BUFFER_MAX_SIZE:-268435488}
-  type: ${VECTOR_BUFFER_TYPE:-memory}
-  when_full: ${VECTOR_BUFFER_WHEN_FULL:-drop_newest}
-compression: ${VECTOR_COMPRESSION_ENABLED:-true}
+  #max_events: ${VECTOR_BUFFER_MEMORY_MAX_EVENTS}
+  #max_size: ${VECTOR_BUFFER_DISK_MAX_SIZE}
+  type: ${VECTOR_BUFFER_TYPE}
+  when_full: ${VECTOR_BUFFER_WHEN_FULL}
+compression: ${VECTOR_COMPRESSION_ENABLED}
 healthcheck:
   enabled: true
 request:
   concurrency: 1024
-  timeout_secs: ${VECTOR_REQUEST_TIMEOUT_SECS:-300}
+  timeout_secs: ${VECTOR_REQUEST_TIMEOUT_SECS}
 tls:
-  enabled: ${VECTOR_TLS_ENABLED:-false}
-  #verify_certificate: ${VECTOR_TLS_VERIFY_CERTIFICATE:-true}
-  #verify_hostname: ${VECTOR_TLS_VERIFY_HOSTNAME:-true}
+  enabled: ${VECTOR_TLS_ENABLED}
+  #verify_certificate: ${VECTOR_TLS_VERIFY_CERTIFICATE}
+  #verify_hostname: ${VECTOR_TLS_VERIFY_HOSTNAME}
   #ca_file: "${CERTIFICATES_DIR}/ca.pem"
   #crt_file: "${CERTIFICATES_DIR}/client.pem"
   #key_file: "${CERTIFICATES_DIR}/client-key.pem"
