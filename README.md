@@ -74,6 +74,7 @@ sinks:
 | Environment Variable            | Default  | Description                                                |
 | ------------------------------- | -------- | ---------------------------------------------------------- |
 | `DISABLE`                       | `false`  | Disables the logshipper service                            |
+| `VECTOR_ACKNOWLEDGEMENTS_ENABLED` | `true` | Sources will wait for this sink to deliver the events before acknowledging receipt |
 | `VECTOR_BUFFER_DISK_MAX_SIZE`   | `268435488` | The maximum size of the buffer on the disk              |
 | `VECTOR_BUFFER_MEMORY_MAX_EVENTS` | `1000` | The maximum number of events allowed in the buffer         |
 | `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use (Options: `disk`, `memory`)      |
