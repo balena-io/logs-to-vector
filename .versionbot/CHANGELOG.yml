@@ -1,4 +1,30 @@
 - commits:
+    - subject: Enables Vector sink acknowledgements by default.
+      hash: 1ecc95f899cb8218cc88f73360a196a1051e3750
+      body: |
+        Acknowledgements increase the reliability of events
+        delivery to the target endpoint.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+    - subject: Rename Vector buffer env vars to make them descriptive.
+      hash: efdd07ca761a15f77adf2caa02ae9a799c686071
+      body: |
+        - Renames VECTOR_BUFFER_MAX_SIZE to VECTOR_BUFFER_DISK_MAX_SIZE
+        - Renames VECTOR_BUFFER_MAX_EVENTS to VECTOR_BUFFER_MEMORY_MAX_EVENTS
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+  version: 1.2.5
+  title: ""
+  date: 2022-11-16T09:58:03.426Z
+- commits:
     - subject: changing all references of logshipper
       hash: 38b69f1612fae3718fd7f8acc974e5fa7d50fe16
       body: ""
