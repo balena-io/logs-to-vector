@@ -1,4 +1,15 @@
 - commits:
+    - subject: Update vector to 0.27.0
+      hash: 2ad7275d55bdd250934c80fe67b1ff8bf7d4899c
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Page-
+  version: 1.3.0
+  title: ""
+  date: 2023-02-09T15:38:17.811Z
+- commits:
     - subject: Enables Vector sink acknowledgements by default.
       hash: 1ecc95f899cb8218cc88f73360a196a1051e3750
       body: |
