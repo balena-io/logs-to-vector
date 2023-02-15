@@ -1,11 +1,11 @@
 name: logs-to-vector
 type: sw.block
 description: >-
-  A log collection agent that ships logs from the balena engine to a downstream
-  Vector endpoint.  It uses Vector (https://vector.dev) as an agent to collect
-  the logs from either journald of the Kubernetes API depending on the environment
-  that it is running in. It then adds labels to the logs then send the logs to a
-  receiving Vector endpoint.
+  A log collection agent that ships logs from the balena engine to a
+  downstream Vector endpoint.  It uses Vector (https://vector.dev) as an agent
+  to collect the logs from either journald of the Kubernetes API depending on
+  the environment that it is running in. It then adds labels to the logs then
+  send the logs to a receiving Vector endpoint.
 assets:
   repository:
     type: blob.asset
@@ -27,4 +27,4 @@ data:
     - surface-go
     - surface-pro-6
     - up-board
-version: 1.2.5
+version: 1.3.1
