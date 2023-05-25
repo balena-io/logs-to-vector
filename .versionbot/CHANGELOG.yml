@@ -1,4 +1,23 @@
 - commits:
+    - subject: Accepts multi-line string for certificates env vars.
+      hash: dd5d0a1f6147829fa94ccf97206ef14dac9fdce9
+      body: |
+        Certificates used to be only accepted in base64 format.
+        This update allows users to set certificates as multi-line
+        strings in environment variables. This also makes it easy
+        to mount certificates in kubernetes secrets as environment
+        variables for logs-to-vector.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.4.0
+  title: ""
+  date: 2023-05-25T08:59:49.112Z
+- commits:
     - subject: Add repo.yml
       hash: 2de33b30089fda76c3c3bb3aafda21b3d89e698e
       body: ""
