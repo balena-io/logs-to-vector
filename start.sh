@@ -23,9 +23,13 @@ function prepare_source_kubernetes() {
 function write_to_file() {
     VARIABLE=$1
     FILE_PATH=$2
-    # Accept both base64 and multi-line strings as input values
-    # for env vars to be written as files
-    echo "${VARIABLE}" | base64 -d >"${FILE_PATH}" 2>/dev/null || echo "${VARIABLE}" >"${FILE_PATH}"
+    if [[ -f "${VARIABLE}" ]]; then
+        # Copy the file if a path is set as value
+        cp -f "${VARIABLE}" "${FILE_PATH}"
+    else
+        # Write the variable value into file if in base64 or multi-line string
+        echo "${VARIABLE}" | base64 -d >"${FILE_PATH}" 2>/dev/null || echo "${VARIABLE}" >"${FILE_PATH}"
+    fi
 }
 
 function prepare_sink_vector() {
