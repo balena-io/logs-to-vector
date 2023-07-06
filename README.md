@@ -22,7 +22,7 @@ volumes:
   logs-to-vector: {}
 
 logs-to-vector:
-    image: bh.cr/balenablocks/logs-to-vector
+    image: bh.cr/balena/logs-to-vector-aarch64
     labels:
       io.balena.features.journal-logs: '1'
     restart: unless_stopped
@@ -52,7 +52,7 @@ services:
 
 *Dockerfile.template*
 ```
-FROM bh.cr/balenablocks/logs-to-vector
+FROM bh.cr/balena/logs-to-vector-aarch64
 
 COPY sink.yaml /etc/vector
 ```
@@ -69,7 +69,7 @@ sinks:
 
 ## Customisation
 
-`bh.cr/balenablocks/logs-to-vector` can be configured via the following variables:
+`logs-to-vector` can be configured via the following variables:
 
 | Environment Variable            | Default  | Description                                                |
 | ------------------------------- | -------- | ---------------------------------------------------------- |
@@ -82,9 +82,9 @@ sinks:
 | `VECTOR_COMPRESSION_ENABLED`    | `true`   | Enables gRPC compression with gzip                         |
 | `VECTOR_ENDPOINT`               | ``       | The endpoint of the vector log aggregator                  |
 | `VECTOR_REQUEST_TIMEOUT_SECS`   | `300`    | The maximum time a request can take before being aborted   |
-| `VECTOR_TLS_CA_FILE`            | ``       | An additional CA certificate file encoded in base 64       |
-| `VECTOR_TLS_CRT_FILE`           | ``       | The client certificate file encoded in base 64             |
-| `VECTOR_TLS_KEY_FILE`           | ``       | The client certificate key file encoded in base 64         |
+| `VECTOR_TLS_CA_FILE`            | ``       | An additional CA certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64.       |
+| `VECTOR_TLS_CRT_FILE`           | ``       | The client certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64.             |
+| `VECTOR_TLS_KEY_FILE`           | ``       | The client certificate key file. The value can be a path to a file, a multi-line string, or a string encoded in base64.         |
 | `VECTOR_TLS_VERIFY_CERTIFICATE` | `true`   | Verifies the TLS certificate of the remote hos             |
 | `VECTOR_TLS_VERIFY_HOSTNAME`    | `true`   | Verifies the endpoint hostname against the TLS certificate |
 
