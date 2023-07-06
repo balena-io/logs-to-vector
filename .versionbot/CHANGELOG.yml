@@ -1,4 +1,21 @@
 - commits:
+    - subject: Updates README and CI workflow to match new repositories.
+      hash: 6223cdb2d8e38fb1d9e616075f11b34788f0ecdd
+      body: |
+        We have moved the logs-to-vector block from the balenalabs
+        organization to the balena organization in balenaCloud.
+        The same changes have been applied to the Github repository.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.5.1
+  title: ""
+  date: 2023-07-06T13:34:09.482Z
+- commits:
     - subject: Allows setting a source path for the TLS certificates and key.
       hash: 9d5139df19726a91105722659b4df7a0fe5a8aec
       body: |
