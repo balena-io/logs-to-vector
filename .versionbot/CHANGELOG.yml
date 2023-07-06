@@ -1,4 +1,21 @@
 - commits:
+    - subject: Allows setting a source path for the TLS certificates and key.
+      hash: 9d5139df19726a91105722659b4df7a0fe5a8aec
+      body: |
+        This allows users to copy a certificate or key from a path
+        aside from setting the contents as the values for the
+        TLS-related variables.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.5.0
+  title: ""
+  date: 2023-07-06T06:53:47.703Z
+- commits:
     - subject: Accepts multi-line string for certificates env vars.
       hash: dd5d0a1f6147829fa94ccf97206ef14dac9fdce9
       body: |
