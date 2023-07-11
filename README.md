@@ -80,11 +80,11 @@ sinks:
 | `VECTOR_BUFFER_TYPE`            | `memory` | The type of buffer to use (Options: `disk`, `memory`)      |
 | `VECTOR_BUFFER_WHEN_FULL`       | `drop_newest` | The behavior when the buffer becomes full (Options: `block`, `drop_newest`) |
 | `VECTOR_COMPRESSION_ENABLED`    | `true`   | Enables gRPC compression with gzip                         |
-| `VECTOR_ENDPOINT`               | ``       | The endpoint of the vector log aggregator                  |
+| `VECTOR_ENDPOINT`               | ``       | The endpoint of the vector log aggregator. The value can be a string template that will be substituted with environment variables (e.g. `vector.$DOMAIN_NAME`). |
 | `VECTOR_REQUEST_TIMEOUT_SECS`   | `300`    | The maximum time a request can take before being aborted   |
-| `VECTOR_TLS_CA_FILE`            | ``       | An additional CA certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64.       |
-| `VECTOR_TLS_CRT_FILE`           | ``       | The client certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64.             |
-| `VECTOR_TLS_KEY_FILE`           | ``       | The client certificate key file. The value can be a path to a file, a multi-line string, or a string encoded in base64.         |
+| `VECTOR_TLS_CA_FILE`            | ``       | An additional CA certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64. The value can be a string template that will be substituted with environment variables (e.g. `$CERTS_DIR/ca.pem`).      |
+| `VECTOR_TLS_CRT_FILE`           | ``       | The client certificate file. The value can be a path to a file, a multi-line string, or a string encoded in base64. The value can be a string template that will be substituted with environment variables (e.g. `$CERTS_DIR/cert.pem`). |
+| `VECTOR_TLS_KEY_FILE`           | ``       | The client certificate key file. The value can be a path to a file, a multi-line string, or a string encoded in base64. The value can be a string template that will be substituted with environment variables (e.g. `$CERTS_DIR/cert.key`). |
 | `VECTOR_TLS_VERIFY_CERTIFICATE` | `true`   | Verifies the TLS certificate of the remote hos             |
 | `VECTOR_TLS_VERIFY_HOSTNAME`    | `true`   | Verifies the endpoint hostname against the TLS certificate |
 
