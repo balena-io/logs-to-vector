@@ -1,4 +1,27 @@
 - commits:
+    - subject: Accepts string templates as values for some config variables.
+      hash: 6ccaee427c45b93147e751939fdac136488b5f94
+      body: |
+        The following configuration environment variables now
+        accept string templates:
+        - VECTOR_ENDPOINT
+        - VECTOR_TLS_CA_FILE
+        - VECTOR_TLS_CRT_FILE
+        - VECTOR_TLS_KEY_FILE
+
+        Variable placeholders in these string templates will be replaced
+        with the actual values found in the environment variables.
+      footer:
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.6.0
+  title: ""
+  date: 2023-07-11T03:06:15.618Z
+- commits:
     - subject: Updates README and CI workflow to match new repositories.
       hash: 6223cdb2d8e38fb1d9e616075f11b34788f0ecdd
       body: |
