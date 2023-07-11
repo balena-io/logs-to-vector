@@ -23,12 +23,14 @@ function prepare_source_kubernetes() {
 function write_to_file() {
     VARIABLE=$1
     FILE_PATH=$2
-    if [[ -f "${VARIABLE}" ]]; then
+    SUBSTITUTED_VARIABLE=$(echo -n $VARIABLE | envsubst)
+    if [[ -f "${SUBSTITUTED_VARIABLE}" ]]; then
         # Copy the file if a path is set as value
-        cp -f "${VARIABLE}" "${FILE_PATH}"
+        cp -f "${SUBSTITUTED_VARIABLE}" "${FILE_PATH}"
     else
         # Write the variable value into file if in base64 or multi-line string
-        echo "${VARIABLE}" | base64 -d >"${FILE_PATH}" 2>/dev/null || echo "${VARIABLE}" >"${FILE_PATH}"
+        echo "${VARIABLE}" | base64 -d >"${FILE_PATH}" 2>/dev/null \
+            || echo "${SUBSTITUTED_VARIABLE}" >"${FILE_PATH}"
     fi
 }
 
@@ -49,7 +51,7 @@ function prepare_sink_vector() {
 
     # Prepare the configuration file
     if [ -n "${VECTOR_ENDPOINT}" ]; then
-        envsubst <templates/sinks/sink-vector.yaml.template >sinks/sink-vector.yaml
+        export VECTOR_ENDPOINT=$(echo -n "${VECTOR_ENDPOINT}" | envsubst)
         if [ -n "${VECTOR_TLS_CA_FILE}" ]; then
             VECTOR_TLS_ENABLED=true
             VECTOR_TLS_VERIFY_CERTIFICATE=${VECTOR_TLS_VERIFY_CERTIFICATE:-true}
