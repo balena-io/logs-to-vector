@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update vector to 0.28.2
+      hash: 05c84777308f34b493ebd2d0a16fb186c07ea8f9
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Page-
+      nested: []
+  version: 1.7.0
+  title: ""
+  date: 2023-07-26T21:10:26.596Z
+- commits:
     - subject: Accepts string templates as values for some config variables.
       hash: 6ccaee427c45b93147e751939fdac136488b5f94
       body: |
