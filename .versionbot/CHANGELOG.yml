@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update vector to 0.29.1
+      hash: abae5565db7ec38b4a1e2a1bbd50ad84c1c8b4db
+      body: ""
+      footer:
+        Change-type: minor
+        change-type: minor
+      author: Page-
+      nested: []
+  version: 1.8.0
+  title: ""
+  date: 2023-07-26T21:20:56.164Z
+- commits:
     - subject: Update vector to 0.28.2
       hash: 05c84777308f34b493ebd2d0a16fb186c07ea8f9
       body: ""
