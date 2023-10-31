@@ -4,7 +4,7 @@
 
 api:
   enabled: true
-  address: "0.0.0.0:8686"
+  address: "[::]:8686"
 
 # Data dir is location controlled at the `DaemonSet`.
 data_dir: /var/lib/logs-to-vector
