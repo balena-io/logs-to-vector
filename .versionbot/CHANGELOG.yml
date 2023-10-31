@@ -1,4 +1,15 @@
 - commits:
+    - subject: allow ipv6 only environments
+      hash: 1f9bdec586e804e37c24c5aadd5318d1ff7ad15a
+      body: ""
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 1.10.2
+  title: ""
+  date: 2023-10-31T15:29:39.369Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.33.1
       hash: cb05877c248c84f208d7369fa462e61fa2387fda
       body: |
