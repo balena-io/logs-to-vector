@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update timberio/vector Docker tag to v0.34.1
+      hash: e9a54f8eee1e03fa645eab8eade2a9f22050549e
+      body: |
+        Update timberio/vector from 0.34.0 to 0.34.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 1.10.4
+  title: ""
+  date: 2023-11-16T17:04:32.460Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.34.0
       hash: 78ea9bf9aa1a0e9b9114feb49a9ad066fccc4053
       body: |
