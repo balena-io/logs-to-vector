@@ -1,4 +1,4 @@
-FROM timberio/vector:0.35.1-debian as logshipper
+FROM timberio/vector:0.39.0-debian as logshipper
 
 RUN apt update \
     && apt install -y \
