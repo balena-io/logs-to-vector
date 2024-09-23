@@ -13,4 +13,14 @@ jobs:
     uses: product-os/flowzone/.github/workflows/flowzone.yml@master
     secrets: inherit
     with:
-      balena_slugs: 'balena/logs-to-vector-aarch64,balena/logs-to-vector-amd64,balena/logs-to-vector-armv7hf'
+      balena_slugs: |
+        balena/logs-to-vector-aarch64,
+        balena/logs-to-vector-amd64,
+        balena/logs-to-vector-armv7hf
+      docker_images: |
+        ghcr.io/balena-io/logs-to-vector
+      required_status_checks: >
+        [
+          "Flowzone / All tests",
+          "Flowzone / All jobs"
+        ]
