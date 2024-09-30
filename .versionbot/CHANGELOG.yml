@@ -1,4 +1,18 @@
 - commits:
+    - subject: Push multi-arch images to ghcr.io.
+      hash: ff2c8df28f3480faab8d11b2db5bd70b739e3cf6
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.9
+  title: ""
+  date: 2024-09-30T16:54:28.429Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.39.0
       hash: 7b9962350bf7242dbab8878b4171489b064dcdf1
       body: |
