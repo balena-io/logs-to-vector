@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add docker-bake config for multi-arch amd64/arm64 builds.
+      hash: 1f9d623d7b351603ae4ae2fd8574fd2e3c04cee3
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.10
+  title: ""
+  date: 2024-10-01T08:11:28.473Z
+- commits:
     - subject: Push multi-arch images to ghcr.io.
       hash: ff2c8df28f3480faab8d11b2db5bd70b739e3cf6
       body: ""
