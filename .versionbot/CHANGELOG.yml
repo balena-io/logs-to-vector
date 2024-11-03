@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update timberio/vector Docker tag to v0.42.0
+      hash: bc2af2ab9e6662cf8a5ca53f6a2055e8dc5e93d7
+      body: |
+        Update timberio/vector from 0.39.0 to 0.42.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Self-hosted Renovate Bot
+      nested: []
+  version: 1.10.11
+  title: ""
+  date: 2024-11-03T12:37:08.152Z
+- commits:
     - subject: Add docker-bake config for multi-arch amd64/arm64 builds.
       hash: 1f9d623d7b351603ae4ae2fd8574fd2e3c04cee3
       body: ""
