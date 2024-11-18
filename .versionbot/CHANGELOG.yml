@@ -1,4 +1,15 @@
 - commits:
+    - subject: Explicitly set GH_TOKEN permissions
+      hash: 4deb4efd5763b90be703e0448fbc77af2e3f142e
+      body: ""
+      footer:
+        change-type: patch
+      author: Anton Belodedenko
+      nested: []
+  version: 1.10.12
+  title: ""
+  date: 2024-11-18T21:14:50.400Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.42.0
       hash: bc2af2ab9e6662cf8a5ca53f6a2055e8dc5e93d7
       body: |
