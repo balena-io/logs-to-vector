@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update timberio/vector Docker tag to v0.43.1
+      hash: 00e9db2c06cd6b3c7a34e1028140069ab5de6d81
+      body: |
+        Update timberio/vector from 0.42.0 to 0.43.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.13
+  title: ""
+  date: 2025-01-06T15:14:18.459Z
+- commits:
     - subject: Explicitly set GH_TOKEN permissions
       hash: 4deb4efd5763b90be703e0448fbc77af2e3f142e
       body: ""
