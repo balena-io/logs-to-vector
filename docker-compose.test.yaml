@@ -1,0 +1,65 @@
+services:
+  # Creates TLS certificates and a sample log file
+  setup:
+    image: alpine:3.19
+    volumes:
+      - test-data:/data
+      - ./test/setup.sh:/usr/bin/setup.sh
+    healthcheck:
+      test: ["CMD", "test", "-f", "/data/ready"]
+      interval: 1s
+      start_period: 1s
+      timeout: 1s
+      retries: 30
+    command: ["sh", "/usr/bin/setup.sh"]
+
+  # Configured to use a vector receiver
+  # Writes received logs into /data/received.ndjson
+  aggregator:
+    image: timberio/vector:0.52.0-alpine
+    command: ["--config", "/etc/vector/vector.yaml"]
+    depends_on:
+      setup:
+        condition: service_healthy
+    volumes:
+      - test-data:/data
+      - ./test/ci-vector-aggregator.yaml:/etc/vector/vector.yaml:ro
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z 127.0.0.1 6000 || exit 1"]
+      interval: 2s
+      timeout: 1s
+      retries: 30
+
+  # Uses a file source for test
+  logs-to-vector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      aggregator:
+        condition: service_healthy
+    environment:
+      VECTOR_ENDPOINT: "aggregator:6000"
+      VECTOR_TLS_CA_FILE: "/data/certs/ca.crt"
+      VECTOR_TLS_CRT_FILE: "/data/certs/client.crt"
+      VECTOR_TLS_KEY_FILE: "/data/certs/client.key"
+      VECTOR_TLS_VERIFY_CERTIFICATE: "true"
+      VECTOR_TLS_VERIFY_HOSTNAME: "true"
+    volumes:
+      - test-data:/data
+      - logs-to-vector-state:/var/lib/logs-to-vector
+      - ./test/source-file.yaml:/etc/vector/sources/source-file.yaml:ro
+
+  # Waits for logs to be collected then performs strict order validation
+  sut:
+    image: alpine:3.19
+    depends_on:
+      - logs-to-vector
+    volumes:
+      - test-data:/data
+      - ./test/sut.sh:/usr/bin/sut.sh
+    command: ["sh", "/usr/bin/sut.sh"]
+
+volumes:
+  test-data: {}
+  logs-to-vector-state: {}

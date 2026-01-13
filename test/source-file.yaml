@@ -1,0 +1,4 @@
+type: file
+include:
+  - /data/input.log
+read_from: beginning
