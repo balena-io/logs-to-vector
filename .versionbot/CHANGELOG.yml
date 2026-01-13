@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update timberio/vector Docker tag to v0.52.0
+      hash: c75f325ef53a3f56990189a7009f3fbe4761e8cd
+      body: |
+        Update timberio/vector from 0.45.0 to 0.52.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.16
+  title: ""
+  date: 2026-01-13T05:54:58.138Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.45.0
       hash: ca59ffdfc80707fe3653560ce5d673e0c750a1f7
       body: |
