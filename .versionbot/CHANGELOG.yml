@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add test to catch breaking changes.
+      hash: 4a1ea7b94dfcca21b2a3116d0bf8b8660637ea1a
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.17
+  title: ""
+  date: 2026-01-14T07:38:34.727Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.52.0
       hash: c75f325ef53a3f56990189a7009f3fbe4761e8cd
       body: |
