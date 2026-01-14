@@ -14,4 +14,3 @@ trim_trailing_whitespace = false
 [*.{yml,yaml,json}]
 indent_style = space
 indent_size = 2
-

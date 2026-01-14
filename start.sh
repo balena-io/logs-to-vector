@@ -51,7 +51,8 @@ function prepare_sink_vector() {
 
     # Prepare the configuration file
     if [ -n "${VECTOR_ENDPOINT}" ]; then
-        export VECTOR_ENDPOINT=$(echo -n "${VECTOR_ENDPOINT}" | envsubst)
+        export VECTOR_ENDPOINT
+        VECTOR_ENDPOINT=$(echo -n "${VECTOR_ENDPOINT}" | envsubst)
         if [ -n "${VECTOR_TLS_CA_FILE}" ]; then
             VECTOR_TLS_ENABLED=true
             VECTOR_TLS_VERIFY_CERTIFICATE=${VECTOR_TLS_VERIFY_CERTIFICATE:-true}
