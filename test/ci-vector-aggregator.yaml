@@ -1,0 +1,20 @@
+sources:
+  vector:
+    type: vector
+    address: 0.0.0.0:6000
+    version: "2"
+    tls:
+      enabled: true
+      crt_file: /data/certs/server.crt
+      key_file: /data/certs/server.key
+      ca_file: /data/certs/ca.crt
+      verify_certificate: true   # Require client auth
+
+sinks:
+  file:
+    type: file
+    inputs:
+      - vector
+    path: /data/received.ndjson
+    encoding:
+      codec: json
