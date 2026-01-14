@@ -1,4 +1,25 @@
 - commits:
+    - subject: Add pre-commit checks.
+      hash: b16f145b532b28a9275c46ac64c2f5376a4ac017
+      body: |
+        Checks for the following:
+        - trailing white spaces
+        - needed newline at end of file
+        - YAML file formatting
+        - large files added to commit
+        - shellcheck
+        - docker compose validity
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.19
+  title: ""
+  date: 2026-01-14T14:29:04.508Z
+- commits:
     - subject: Update alpine Docker tag to v3.23
       hash: ee01affe1e754bcaf6a1d35246dc7728303b3466
       body: |
