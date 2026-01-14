@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update alpine Docker tag to v3.23
+      hash: ee01affe1e754bcaf6a1d35246dc7728303b3466
+      body: |
+        Update alpine from 3.19 to 3.23
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.18
+  title: ""
+  date: 2026-01-14T08:10:53.790Z
+- commits:
     - subject: Add test to catch breaking changes.
       hash: 4a1ea7b94dfcca21b2a3116d0bf8b8660637ea1a
       body: ""
