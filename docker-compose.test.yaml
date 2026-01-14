@@ -1,7 +1,7 @@
 services:
   # Creates TLS certificates and a sample log file
   setup:
-    image: alpine:3.19
+    image: alpine:3.23
     volumes:
       - test-data:/data
       - ./test/setup.sh:/usr/bin/setup.sh
@@ -52,7 +52,7 @@ services:
 
   # Waits for logs to be collected then performs strict order validation
   sut:
-    image: alpine:3.19
+    image: alpine:3.23
     depends_on:
       - logs-to-vector
     volumes:
