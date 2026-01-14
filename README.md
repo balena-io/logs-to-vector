@@ -30,7 +30,7 @@ logs-to-vector:
       - logs-to-vector:/var/lib/logs-to-vector
 ```
 
-You can also set your docker-compose.yml to build from a Dockerfile.template file. 
+You can also set your docker-compose.yml to build from a Dockerfile.template file.
 You may add your own Vector sinks that takes `balena` as input.
 
 *docker-compose.yml*:
