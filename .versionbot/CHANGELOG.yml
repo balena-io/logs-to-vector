@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update pre-commit hook python-jsonschema/check-jsonschema to v0.36.1
+      hash: fc5e41d45a4b37a6a6fe90c604c072cb7f7a8e60
+      body: |
+        Update python-jsonschema/check-jsonschema from 0.36.0 to 0.36.1
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.20
+  title: ""
+  date: 2026-02-15T00:07:36.152Z
+- commits:
     - subject: Add pre-commit checks.
       hash: b16f145b532b28a9275c46ac64c2f5376a4ac017
       body: |
