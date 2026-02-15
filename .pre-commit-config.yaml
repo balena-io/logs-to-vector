@@ -19,7 +19,7 @@ repos:
     require_serial: true   # Better for scripts that source each other
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.36.0
+  rev: 0.36.1
   hooks:
   - id: check-compose-spec  # This automatically has the correct regex and schema
     name: Validate Docker Compose files
