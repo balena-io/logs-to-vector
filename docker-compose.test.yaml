@@ -16,7 +16,7 @@ services:
   # Configured to use a vector receiver
   # Writes received logs into /data/received.ndjson
   aggregator:
-    image: timberio/vector:0.52.0-alpine
+    image: timberio/vector:0.53.0-alpine
     command: ["--config", "/etc/vector/vector.yaml"]
     depends_on:
       setup:
