@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add monitoring of Kubernetes service account tokens.
+      hash: f2a53236df0664ad9b5ad4f68a33963bfcbd2dec
+      body: |
+        This forces logs-to-vector pods to restart when service account tokens
+        are refreshed.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.21
+  title: ""
+  date: 2026-03-03T16:16:54.176Z
+- commits:
     - subject: Update pre-commit hook python-jsonschema/check-jsonschema to v0.36.1
       hash: fc5e41d45a4b37a6a6fe90c604c072cb7f7a8e60
       body: |
