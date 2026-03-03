@@ -23,16 +23,17 @@ function prepare_source_kubernetes() {
 }
 
 function write_to_file() {
-    VARIABLE=$1
-    FILE_PATH=$2
-    SUBSTITUTED_VARIABLE=$(echo -n $VARIABLE | envsubst)
-    if [[ -f "${SUBSTITUTED_VARIABLE}" ]]; then
+    local variable=$1
+    local file_path=$2
+    local substituted_variable
+    substituted_variable=$(echo -n "$variable" | envsubst)
+    if [[ -f "${substituted_variable}" ]]; then
         # Copy the file if a path is set as value
-        cp -f "${SUBSTITUTED_VARIABLE}" "${FILE_PATH}"
+        cp -f "${substituted_variable}" "${file_path}"
     else
         # Write the variable value into file if in base64 or multi-line string
-        echo "${VARIABLE}" | base64 -d >"${FILE_PATH}" 2>/dev/null \
-            || echo "${SUBSTITUTED_VARIABLE}" >"${FILE_PATH}"
+        echo "${variable}" | base64 -d >"${file_path}" 2>/dev/null \
+            || echo "${substituted_variable}" >"${file_path}"
     fi
 }
 
@@ -65,10 +66,10 @@ function prepare_sink_vector() {
             if [ -n "${VECTOR_TLS_CRT_FILE}" ] && [ -n "${VECTOR_TLS_KEY_FILE}" ]; then
                 write_to_file "${VECTOR_TLS_CRT_FILE}" "${CERTIFICATES_DIR}/client.pem"
                 write_to_file "${VECTOR_TLS_KEY_FILE}" "${CERTIFICATES_DIR}/client-key.pem"
-                sed -i 's|#crt_file:|crt_file:|g' sinks/sink-vector.yaml
-                sed -i 's|#key_file:|key_file:|g' sinks/sink-vector.yaml
-                sed -i 's|#verify_certificate:|verify_certificate:|g' sinks/sink-vector.yaml
-                sed -i 's|#verify_hostname:|verify_hostname:|g' sinks/sink-vector.yaml
+                sed -i -e 's|#crt_file:|crt_file:|g' \
+                       -e 's|#key_file:|key_file:|g' \
+                       -e 's|#verify_certificate:|verify_certificate:|g' \
+                       -e 's|#verify_hostname:|verify_hostname:|g' sinks/sink-vector.yaml
             fi
         else
             VECTOR_TLS_ENABLED=false

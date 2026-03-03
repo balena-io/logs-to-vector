@@ -7,7 +7,7 @@ address: "${VECTOR_ENDPOINT}"
 acknowledgements:
   enabled: ${VECTOR_ACKNOWLEDGEMENTS_ENABLED}
 batch:
-  max_size: 1000000
+  max_bytes: 10000000
 buffer:
   #max_events: ${VECTOR_BUFFER_MEMORY_MAX_EVENTS}
   #max_size: ${VECTOR_BUFFER_DISK_MAX_SIZE}
@@ -17,7 +17,6 @@ compression: ${VECTOR_COMPRESSION_ENABLED}
 healthcheck:
   enabled: true
 request:
-  concurrency: 1024
   timeout_secs: ${VECTOR_REQUEST_TIMEOUT_SECS}
 tls:
   enabled: ${VECTOR_TLS_ENABLED}
@@ -26,4 +25,3 @@ tls:
   #ca_file: "${CERTIFICATES_DIR}/ca.pem"
   #crt_file: "${CERTIFICATES_DIR}/client.pem"
   #key_file: "${CERTIFICATES_DIR}/client-key.pem"
-version: "2"
