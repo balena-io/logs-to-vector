@@ -3,6 +3,8 @@
 
 set -ae
 
+SA_TOKEN_FILE="/var/run/secrets/kubernetes.io/serviceaccount/token"
+
 function prepare_source_balena() {
     if [ -n "$BALENA_DEVICE_UUID" ]; then
         mkdir -p sources transforms
@@ -81,11 +83,48 @@ function prepare_sink_vector() {
     fi
 }
 
+function watch_service_account_token() {
+    if [ ! -f "${SA_TOKEN_FILE}" ]; then
+        echo "SA token file not found, skipping token watcher."
+        return
+    fi
+
+    local initial_hash
+    initial_hash=$(sha256sum "${SA_TOKEN_FILE}" | awk '{print $1}') || {
+            echo "Failed to read token file, forcing restart"
+            kill -TERM "${VECTOR_PID}" 2>/dev/null || true
+            return
+        }
+    echo "Watching SA token for rotation (hash: ${initial_hash:0:16}...)"
+
+    while true; do
+        sleep 60
+        local current_hash
+        current_hash=$(sha256sum "${SA_TOKEN_FILE}" | awk '{print $1}') || {
+            echo "Failed to read token file, forcing restart"
+            kill -TERM "${VECTOR_PID}" 2>/dev/null || true
+            return
+        }
+        if [ "${current_hash}" != "${initial_hash}" ]; then
+            echo "SA token rotated. Stopping Vector to trigger pod restart..."
+            kill -TERM "${VECTOR_PID}" 2>/dev/null || true
+            return
+        fi
+    done
+}
+
 function start_vector() {
     # https://vector.dev/docs/administration/validating/
     find /etc/vector -name "*.y*ml" -exec cat {} \;
-    vector validate --config-dir /etc/vector &&
-        vector --config-dir /etc/vector
+    vector validate --config-dir /etc/vector
+    vector --config-dir /etc/vector &
+    VECTOR_PID=$!
+
+    if [ -n "${KUBERNETES_SERVICE_HOST}" ]; then
+        watch_service_account_token &
+    fi
+
+    wait $VECTOR_PID
 }
 
 if [[ "$DISABLED" =~ true|True|TRUE|yes|Yes|YES|on|On|ON|1 ]]; then
