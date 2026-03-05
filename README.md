@@ -93,3 +93,23 @@ You can refer to the [docs](https://www.balena.io/docs/learn/manage/serv-vars/#e
 Alternatively, you can set them in the `docker-compose.yml` or `Dockerfile.template` files.
 
 [vector]: https://vector.dev
+
+
+## Testing
+
+This project includes an integration-style test flow wired via Docker Compose.
+
+To run the tests, make sure you have Docker and Docker Compose installed, then run:
+
+```bash
+docker compose -f docker-compose.test.yaml run --rm sut
+```
+
+What this does:
+
+* Uses docker-compose.test.yaml as the compose configuration file.
+* Starts the supporting services (setup, aggregator, logs-to-vector) as defined.
+* Runs the sut service, which executes the test script (/usr/bin/sut.sh).
+* Automatically removes the sut container when the test run completes.
+
+If the command exits with status 0, the tests passed; any non-zero exit code indicates a failure.
