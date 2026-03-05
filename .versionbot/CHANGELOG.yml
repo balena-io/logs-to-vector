@@ -1,4 +1,42 @@
 - commits:
+    - subject: Improve Vector sink defaults and codebase hygiene
+      hash: 31086b8e8bd81d37e8375f20eb3d9f93e22135ea
+      body: >
+        Fixed concurrency (1024) overwhelms the downstream aggregator under load
+        or artificially caps throughput. Vector's adaptive concurrency uses a
+        TCP-inspired feedback loop to auto-tune concurrency from real-time
+        response latency — the recommended default and well-suited for
+        Kubernetes' dynamic capacity.
+
+
+        The 10MB batch size aligns with Vector's recommended default, reducing
+
+        HTTP round-trips to the aggregator for better throughput.
+
+
+        Summary of included changes:
+
+        - Replace fixed concurrency (1024) with Vector's adaptive concurrency
+        default.
+
+        - Update batch field from max_size to max_bytes and set to 10MB.
+
+        - Remove deprecated version: "2" from sink template.
+
+        - Use lowercase local variables and consolidate sed calls in start.sh.
+
+        - Add testing instructions to README.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.23
+  title: ""
+  date: 2026-03-05T14:26:51.842Z
+- commits:
     - subject: Update timberio/vector Docker tag to v0.53.0
       hash: 5728d371dd6efad15950965b56c7d0ca2afa8039
       body: |
