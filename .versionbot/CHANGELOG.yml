@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update pre-commit hook python-jsonschema/check-jsonschema to v0.36.2
+      hash: b2322469799cc1b182e5833df84baf4446222987
+      body: |
+        Update python-jsonschema/check-jsonschema from 0.36.1 to 0.36.2
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.24
+  title: ""
+  date: 2026-03-15T00:06:21.435Z
+- commits:
     - subject: Improve Vector sink defaults and codebase hygiene
       hash: 31086b8e8bd81d37e8375f20eb3d9f93e22135ea
       body: >
