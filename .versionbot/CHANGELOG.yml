@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin product-os/flowzone action to a53cf4b
+      hash: 14a5950edb6e5c42488b24caf426a90a27300eef
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.25
+  title: ""
+  date: 2026-03-24T18:32:15.122Z
+- commits:
     - subject: Update pre-commit hook python-jsonschema/check-jsonschema to v0.36.2
       hash: b2322469799cc1b182e5833df84baf4446222987
       body: |
