@@ -1,7 +1,7 @@
 services:
   # Creates TLS certificates and a sample log file
   setup:
-    image: alpine:3.23
+    image: alpine:3.23@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11
     volumes:
       - test-data:/data
       - ./test/setup.sh:/usr/bin/setup.sh
@@ -16,7 +16,7 @@ services:
   # Configured to use a vector receiver
   # Writes received logs into /data/received.ndjson
   aggregator:
-    image: timberio/vector:0.53.0-alpine
+    image: timberio/vector:0.53.0-alpine@sha256:ca92d617e905953c3f852e7e88061f7039460e733522e3f0c21bc6ae946b2558
     command: ["--config", "/etc/vector/vector.yaml"]
     depends_on:
       setup:
@@ -52,7 +52,7 @@ services:
 
   # Waits for logs to be collected then performs strict order validation
   sut:
-    image: alpine:3.23
+    image: alpine:3.23@sha256:5b10f432ef3da1b8d4c7eb6c487f2f5a8f096bc91145e68878dd4a5019afde11
     depends_on:
       - logs-to-vector
     volumes:
