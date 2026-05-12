@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin dependencies
+      hash: a19c0be48cc69bcd2e12e5221d26e8b880108932
+      body: |
+        Update alpine
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.38
+  title: ""
+  date: 2026-05-12T18:00:47.606Z
+- commits:
     - subject: Revert flowzone pinning to master
       hash: 26805cbffa05691c9e85216d508b730e0f80b684
       body: ""
