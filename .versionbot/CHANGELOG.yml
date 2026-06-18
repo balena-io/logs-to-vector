@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update pre-commit hooks to v0.37.3
+      hash: 5a9f3d3ee2b9498c98b7c623b82f666df9d6f5a7
+      body: |
+        Update python-jsonschema/check-jsonschema from 0.36.2 to 0.37.3
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.43
+  title: ""
+  date: 2026-06-18T08:57:43.066Z
+- commits:
     - subject: Update alpine:3.24 Docker digest to 28bd5fe
       hash: ab55d39040dd24d62dd5d40b49858f138ad84afa
       body: |
