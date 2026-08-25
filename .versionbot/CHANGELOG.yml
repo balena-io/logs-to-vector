@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency flowzonify to v0.4.0
+      hash: efc3cf0209bdba9b72c7eb345d1524677d776ddc
+      body: |
+        Update flowzonify from 0.0.0 to 0.4.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.45
+  title: ""
+  date: 2026-08-25T15:25:42.181Z
+- commits:
     - subject: Update pre-commit hook python-jsonschema/check-jsonschema to v0.37.4
       hash: 74fe24cde3b792d464b089430b51c0570321e7ab
       body: |
