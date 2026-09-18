@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update alpine:3.24 Docker digest to e7c4abb
+      hash: 216a8f6944ad44147062dae0c11eefe8b0a0702a
+      body: |
+        Update alpine
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.46
+  title: ""
+  date: 2026-09-18T00:02:41.505Z
+- commits:
     - subject: Update dependency flowzonify to v0.4.0
       hash: efc3cf0209bdba9b72c7eb345d1524677d776ddc
       body: |
