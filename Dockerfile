@@ -1,4 +1,4 @@
-FROM timberio/vector:0.53.0-debian@sha256:a3c2790c83180f89569981173d34a9680c05dc0da114fbe2a55235a099acfa13 as logshipper
+FROM timberio/vector:0.59.0-debian@sha256:98e7b4dfe50750e61470697bbd2fbeca643d12bea97f351005038ef506eab630 as logshipper
 
 RUN apt update \
     && apt install -y \
