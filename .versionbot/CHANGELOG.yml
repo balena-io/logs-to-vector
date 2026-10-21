@@ -1,4 +1,21 @@
 - commits:
+    - subject: Install the latest CA certificates at build time
+      hash: d8267d711408d5c6f46c85f3187b00613aad1bbc
+      body: |
+        Install ca-certificates explicitly in the logshipper stage. The image
+        then gets the latest CA certificates at the time of build, rather
+        than the older bundle that ships in the vector base image.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+        signed-off-by: Carlo Miguel F. Cruz <carloc@balena.io>
+      author: Carlo Miguel F. Cruz
+      nested: []
+  version: 1.10.49
+  title: ""
+  date: 2026-10-21T13:45:22.708Z
+- commits:
     - subject: Update alpine:3.24 Docker digest to 294b683
       hash: 2919ce22f3e75399cd7e76362b212e84f55d6047
       body: |
