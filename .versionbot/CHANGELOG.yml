@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update alpine:3.24 Docker digest to c6b073f
+      hash: 7d6452bd91b5c0f5bff20b42f21660a95fc4b31e
+      body: |
+        Update alpine
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 1.10.50
+  title: ""
+  date: 2026-10-22T00:09:08.082Z
+- commits:
     - subject: Install the latest CA certificates at build time
       hash: d8267d711408d5c6f46c85f3187b00613aad1bbc
       body: |
