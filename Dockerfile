@@ -1,4 +1,4 @@
-FROM timberio/vector:0.53.0-debian@sha256:a3c2790c83180f89569981173d34a9680c05dc0da114fbe2a55235a099acfa13 as logshipper
+FROM timberio/vector:0.62.0-debian@sha256:6266b1d35c844918ff1c48ea2ec4f57c2b0664c46f3e17fc2418d5dda1692068 as logshipper
 
 # ca-certificates is listed to pull security fixes newer than the base image.
 RUN apt update \
